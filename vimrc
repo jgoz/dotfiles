@@ -67,6 +67,9 @@ set matchtime=2               " For .2 seconds
 "  less
 au BufRead,BufNewFile *.less set ft=less
 
+" NERDTree
+let NERDTreeChDirMode=2
+
 "  mouse
 set mouse=a                   " mouse support in all modes
 set mousehide                 " hide the mouse when typing
@@ -77,8 +80,6 @@ map <MouseMiddle> <esc>"*p
 setlocal spelllang=en
 nmap <LocalLeader>ss :set spell!<CR>
 
-"noremap j gj
-"noremap k gk
 au FileType html,tex noremap <buffer> j gj
 au FileType html,tex noremap <buffer> k gk
 
@@ -133,8 +134,6 @@ nmap <LocalLeader>fo  :%foldopen!<cr>
 nmap <LocalLeader>fc  :%foldclose!<cr>
 " ,tt will toggle taglist on and off
 nmap <LocalLeader>tt :Tlist<cr>
-" ,nn will toggle NERDTree on and off
-nmap <LocalLeader>nn :NERDTreeToggle<cr>
 " When I'm pretty sure that the first suggestion is correct
 map <LocalLeader>r 1z=
 
