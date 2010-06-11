@@ -1,3 +1,6 @@
+let mapleader = "\\"
+let maplocalleader = "\\"
+
 syntax on
 set autoread
 set nocompatible
@@ -22,8 +25,7 @@ set numberwidth=1
 set bg=dark
 
 " timing
-set timeout timeoutlen=0 ttimeoutlen=100
-set matchtime=2
+set notimeout timeoutlen=0 ttimeoutlen=10
 
 set guitablabel=%N/\ %t\ %M
 
@@ -62,13 +64,20 @@ endif
 set incsearch                 " incremental search
 set hlsearch                  " highlight the search
 set showmatch                 " show matching bracket
-set matchtime=2               " For .2 seconds
+set matchtime=1
 
 "  less
 au BufRead,BufNewFile *.less set ft=less
 
 " NERDTree
 let NERDTreeChDirMode=2
+
+" VimClojure
+let vimclojure#WantNailgun=1
+let vimclojure#HighlightBuiltins=1
+let vimclojure#ParenRainbow=1
+let vimclojure#DynamicHighlighting=1
+let vimclojure#SplitSize = 10
 
 "  mouse
 set mouse=a                   " mouse support in all modes
@@ -118,24 +127,12 @@ function! YRRunAfterMaps()
 endfunction
 " toggle list mode
 nmap <LocalLeader>tl :set list!<cr>
-" toggle paste mode
-nmap <LocalLeader>pp :set paste!<cr>
 " change directory to that of current file
 nmap <LocalLeader>cd :cd%:p:h<cr>
 " change local directory to that of current file
 nmap <LocalLeader>lcd :lcd%:p:h<cr>
 " correct type-o's on exit
 nmap q: :q
-" save and build
-nmap <LocalLeader>wm  :w<cr>:make<cr>
-" open all folds
-nmap <LocalLeader>fo  :%foldopen!<cr>
-" close all folds
-nmap <LocalLeader>fc  :%foldclose!<cr>
-" ,tt will toggle taglist on and off
-nmap <LocalLeader>tt :Tlist<cr>
-" When I'm pretty sure that the first suggestion is correct
-map <LocalLeader>r 1z=
 
 " If I forgot to sudo vim a file, do that with :w!!
 cmap w!! %!sudo tee > /dev/null %
