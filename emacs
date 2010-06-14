@@ -41,6 +41,10 @@
    (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
+;; require or autoload paredit-mode
+(defun lisp-enable-paredit-hook () (paredit-mode 1))
+(add-hook 'clojure-mode-hook 'lisp-enable-paredit-hook)
+
 (eval-after-load 'paredit
   '(progn
     (viper-add-local-keys 'vi-state '(("\C-\M-h" . paredit-backward-slurp-sexp)))
@@ -53,3 +57,8 @@
 (setq viper-translate-all-ESC-keysequences nil)
 (setq viper-ESC-keyseq-timeout 20)
 (setq viper-no-multiple-ESC 't)
+(setq vc-handled-backends nil)
+
+;; No TABs!
+(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
