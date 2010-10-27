@@ -1,6 +1,3 @@
-let mapleader = "\\"
-let maplocalleader = "\\"
-
 syntax on
 set autoread
 set nocompatible
@@ -29,6 +26,9 @@ set notimeout timeoutlen=0 ttimeoutlen=10
 
 set guitablabel=%N/\ %t\ %M
 
+call pathogen#runtime_append_all_bundles() 
+
+filetype off " Ubuntu does 'filetype on' in /etc/vimrc, conflicting with pathogen
 filetype on
 filetype indent on
 filetype plugin on
@@ -66,18 +66,8 @@ set hlsearch                  " highlight the search
 set showmatch                 " show matching bracket
 set matchtime=1
 
-"  less
-au BufRead,BufNewFile *.less set ft=less
-
 " NERDTree
 let NERDTreeChDirMode=2
-
-" VimClojure
-let vimclojure#WantNailgun=1
-let vimclojure#HighlightBuiltins=1
-let vimclojure#ParenRainbow=1
-let vimclojure#DynamicHighlighting=1
-let vimclojure#SplitSize = 10
 
 "  mouse
 set mouse=a                   " mouse support in all modes
